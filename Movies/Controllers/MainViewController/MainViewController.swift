@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.title = "Main View"
+        self.view.backgroundColor = .orange
     }
 
 
