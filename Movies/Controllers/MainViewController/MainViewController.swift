@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     
     var viewModel: MainViewModel = MainViewModel()
 
-    var cellDataSource : [MovieResult] = []
+    var cellDataSource : [MovieTableCellViewModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,12 @@ class MainViewController: UIViewController {
     
     func configView() {
         self.title = "Trending Movies"
+        if let navigationBar = navigationController?.navigationBar {
+               let titleAttributes: [NSAttributedString.Key: Any] = [
+                   NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 25) 
+               ]
+               navigationBar.titleTextAttributes = titleAttributes
+           }
         self.view.backgroundColor = .orange
         setupTableView()
     }
