@@ -53,6 +53,16 @@ extension MainViewController: UITableViewDataSource , UITableViewDelegate {
     CGFloat {
         return 200.0
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movieId = cellDataSource[indexPath.row].id
+        self.openDetail(movieId: movieId)
+    }
+    
+    
+    
+    
 }
 
 

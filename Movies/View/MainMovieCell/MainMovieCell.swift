@@ -38,16 +38,25 @@ class MainMovieCell: UITableViewCell {
         backView.addBorder(color: .label, windth: 1)
         backView.round()
         backView.backgroundColor = .lightGray
-        movieImageView.round(25)
+        movieImageView.round()
     }
-
-    func setupCell(viewModel : MovieTableCellViewModel){
+    
+    func setupCell(viewModel: MovieTableCellViewModel) {
         self.nameLabel.text = viewModel.title
         self.dateLabel.text = viewModel.date
         self.rateLabel.text = viewModel.rating
+        movieImageView.contentMode = .scaleAspectFit
         DispatchQueue.main.async { [weak self] in
-            self?.movieImageView.kf.setImage(with: viewModel.imageUrl)
+            self?.movieImageView.kf.setImage(with: viewModel.imageUrl) { result in
+                switch result {
+                case .success:
+                    //print("Image loaded successfully, now apply corner radius")
+                    self?.movieImageView.round(25)
+                case .failure(let error):
+                    print("Error loading image: \(error)")
+                }
+            }
         }
     }
-    
 }
+

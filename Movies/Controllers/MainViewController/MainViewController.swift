@@ -31,12 +31,17 @@ class MainViewController: UIViewController {
     func configView() {
         self.title = "Trending Movies"
         if let navigationBar = navigationController?.navigationBar {
+               navigationBar.barTintColor = .orange
+               navigationBar.isTranslucent = false // Ensure translucency is turned off
                let titleAttributes: [NSAttributedString.Key: Any] = [
-                   NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 25) 
+                   NSAttributedString.Key.foregroundColor: UIColor.white,
+                   NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20) // Adjust the font size as needed
                ]
                navigationBar.titleTextAttributes = titleAttributes
            }
         self.view.backgroundColor = .orange
+        navigationController?.view.backgroundColor = .orange
+
         setupTableView()
     }
     
@@ -61,6 +66,15 @@ class MainViewController: UIViewController {
             self.cellDataSource = movies
             self.reloadTableView()
         }
+    }
+    
+    func openDetail(movieId : Int){
+        guard let movie = viewModel.retriveMovie(with: movieId) else {
+            return
+        }
+        let detailViewModel = DetailsMovieViewModel(movie: movie)
+        let detailsController = DetailMovieViewController(viewModel: detailViewModel)
+        self.navigationController?.pushViewController(detailsController, animated: true)
     }
 }
 

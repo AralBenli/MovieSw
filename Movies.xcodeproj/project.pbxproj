@@ -26,6 +26,9 @@
 		AC941BDD2B20A9A4004A96CC /* MainMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC941BDB2B20A9A4004A96CC /* MainMovieCell.xib */; };
 		AC941BDF2B20B805004A96CC /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC941BDE2B20B805004A96CC /* UIViewExtensions.swift */; };
 		AC941BE12B20BC82004A96CC /* MovieTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC941BE02B20BC82004A96CC /* MovieTableCellViewModel.swift */; };
+		AC941BEC2B20F8A3004A96CC /* DetailMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC941BEA2B20F8A3004A96CC /* DetailMovieViewController.swift */; };
+		AC941BED2B20F8A3004A96CC /* DetailMovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC941BEB2B20F8A3004A96CC /* DetailMovieViewController.xib */; };
+		AC941BEF2B20FA4C004A96CC /* DetailsMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC941BEE2B20FA4C004A96CC /* DetailsMovieViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,9 @@
 		AC941BDB2B20A9A4004A96CC /* MainMovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMovieCell.xib; sourceTree = "<group>"; };
 		AC941BDE2B20B805004A96CC /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		AC941BE02B20BC82004A96CC /* MovieTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableCellViewModel.swift; sourceTree = "<group>"; };
+		AC941BEA2B20F8A3004A96CC /* DetailMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieViewController.swift; sourceTree = "<group>"; };
+		AC941BEB2B20F8A3004A96CC /* DetailMovieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMovieViewController.xib; sourceTree = "<group>"; };
+		AC941BEE2B20FA4C004A96CC /* DetailsMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMovieViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +160,7 @@
 		AC4D2F912B1F8E2C002B44A1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AC941BE92B20F74B004A96CC /* DetailMovieViewController */,
 				AC4D2F832B1F83DD002B44A1 /* MainViewController */,
 			);
 			path = Controllers;
@@ -189,6 +196,7 @@
 			children = (
 				AC4D2FA02B1FB666002B44A1 /* MainViewModel.swift */,
 				AC941BE02B20BC82004A96CC /* MovieTableCellViewModel.swift */,
+				AC941BEE2B20FA4C004A96CC /* DetailsMovieViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -234,6 +242,15 @@
 				AC941BDB2B20A9A4004A96CC /* MainMovieCell.xib */,
 			);
 			path = MainMovieCell;
+			sourceTree = "<group>";
+		};
+		AC941BE92B20F74B004A96CC /* DetailMovieViewController */ = {
+			isa = PBXGroup;
+			children = (
+				AC941BEA2B20F8A3004A96CC /* DetailMovieViewController.swift */,
+				AC941BEB2B20F8A3004A96CC /* DetailMovieViewController.xib */,
+			);
+			path = DetailMovieViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,6 +365,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC4D2F7C2B1F7DBE002B44A1 /* LaunchScreen.storyboard in Resources */,
+				AC941BED2B20F8A3004A96CC /* DetailMovieViewController.xib in Resources */,
 				AC4D2F872B1F840C002B44A1 /* MainViewController.xib in Resources */,
 				AC4D2F792B1F7DBE002B44A1 /* Assets.xcassets in Resources */,
 				AC941BDD2B20A9A4004A96CC /* MainMovieCell.xib in Resources */,
@@ -379,11 +397,13 @@
 				AC941BDC2B20A9A4004A96CC /* MainMovieCell.swift in Sources */,
 				AC4D2F9F2B1FB2CA002B44A1 /* MainViewController+TableView.swift in Sources */,
 				AC4D2F702B1F7DBD002B44A1 /* AppDelegate.swift in Sources */,
+				AC941BEC2B20F8A3004A96CC /* DetailMovieViewController.swift in Sources */,
 				AC4D2FC32B1FC55B002B44A1 /* ApiCall.swift in Sources */,
 				AC4D2F862B1F840C002B44A1 /* MainViewController.swift in Sources */,
 				AC941BDF2B20B805004A96CC /* UIViewExtensions.swift in Sources */,
 				AC941BE12B20BC82004A96CC /* MovieTableCellViewModel.swift in Sources */,
 				AC4D2FBF2B1FBDCF002B44A1 /* TrendingMoviesResponse.swift in Sources */,
+				AC941BEF2B20FA4C004A96CC /* DetailsMovieViewModel.swift in Sources */,
 				AC4D2FC52B1FCC7F002B44A1 /* Observeable.swift in Sources */,
 				AC4D2FA12B1FB666002B44A1 /* MainViewModel.swift in Sources */,
 			);
