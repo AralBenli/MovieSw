@@ -28,7 +28,7 @@ enum NetworkError: Error {
             let urlString = NetworkConstants.shared.baseUrl +
             "trending/all/day?api_key=" +
             NetworkConstants.shared.apiKey
-            print(urlString)
+           // print(urlString)
             
             guard let url = URL(string: urlString) else {
                 completionHandler(Result.failure(.urlError))

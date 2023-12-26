@@ -12,11 +12,7 @@ import UIKit
 extension MainViewController: UITableViewDataSource , UITableViewDelegate {
     
     func setupTableView(){
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.backgroundColor = .clear
-        
-        self.registerCells()
+        registerCells()
     }
     
     func registerCells(){
@@ -25,7 +21,8 @@ extension MainViewController: UITableViewDataSource , UITableViewDelegate {
     }
     
     func reloadTableView(){
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {return}
             self.tableView.reloadData()
         }
     }
@@ -41,23 +38,20 @@ extension MainViewController: UITableViewDataSource , UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           guard let cell = tableView.dequeueReusableCell(withIdentifier: MainMovieCell.identifier, for: indexPath) as? MainMovieCell else {
-               return UITableViewCell()
-           }
-           cell.setupCell(viewModel: cellDataSource[indexPath.row])
-           cell.selectionStyle = .none
-           return cell
-       }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath)->
-    CGFloat {
-        return 200.0
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MainMovieCell.identifier, for: indexPath) as? MainMovieCell else {
+            return UITableViewCell()
+        }
+        cell.setupCell(viewModel: cellDataSource[indexPath.row])
+        cell.selectionStyle = .none
+        return cell
     }
+    
+
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movieId = cellDataSource[indexPath.row].id
-        self.openDetail(movieId: movieId)
+        openDetail(movieId: movieId)
     }
     
     

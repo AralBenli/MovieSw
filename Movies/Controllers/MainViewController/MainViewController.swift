@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var viewModel: MainViewModel = MainViewModel()
-
+    
     var cellDataSource : [MovieTableCellViewModel] = []
     
     override func viewDidLoad() {
@@ -24,43 +24,43 @@ class MainViewController: UIViewController {
         bindViewModel()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel.getData()
     }
     
     func configView() {
-        self.title = "Trending Movies"
+        title = "Trending Movies"
         if let navigationBar = navigationController?.navigationBar {
-               navigationBar.barTintColor = .orange
-               navigationBar.isTranslucent = false // Ensure translucency is turned off
-               let titleAttributes: [NSAttributedString.Key: Any] = [
-                   NSAttributedString.Key.foregroundColor: UIColor.white,
-                   NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20) // Adjust the font size as needed
-               ]
-               navigationBar.titleTextAttributes = titleAttributes
-           }
-        self.view.backgroundColor = .orange
+            navigationBar.barTintColor = .orange
+            navigationBar.isTranslucent = false // Ensure translucency is turned off
+            let titleAttributes: [NSAttributedString.Key: Any] = [
+                NSAttributedString.Key.foregroundColor: UIColor.white,
+                NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 20) // Adjust the font size as needed
+            ]
+            navigationBar.titleTextAttributes = titleAttributes
+        }
         navigationController?.view.backgroundColor = .orange
-
+        
         setupTableView()
     }
     
     func bindViewModel() {
         viewModel.isLoading.bind { [weak self] isLoading in
-            guard let isLoading = isLoading else {
-            return
-        }
+            guard let self, let isLoading = isLoading else {
+                return
+            }
             DispatchQueue.main.async {
                 if isLoading {
-                    self?.activityIndicator.startAnimating()
+                    self.activityIndicator.startAnimating()
                 } else {
-                    self?.activityIndicator.stopAnimating()
+                    self.activityIndicator.stopAnimating()
                 }
             }
         }
         
         viewModel.cellDataSource.bind { [weak self] movies in
-            guard let self = self , let movies = movies else {
+            guard let self, let movies = movies else {
                 return
             }
             self.cellDataSource = movies
@@ -74,7 +74,9 @@ class MainViewController: UIViewController {
         }
         let detailViewModel = DetailsMovieViewModel(movie: movie)
         let detailsController = DetailMovieViewController(viewModel: detailViewModel)
-        self.navigationController?.pushViewController(detailsController, animated: true)
+        DispatchQueue.main.async {
+            self.navigationController?.pushViewController(detailsController, animated: true)
+        }
     }
 }
 

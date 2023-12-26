@@ -34,7 +34,7 @@ class MainViewModel {
             
             switch result {
             case .success(let data):
-                print("Top Trending Counts : \(data.results!.count)")
+              //  print("Top Trending Counts : \(data.results!.count)")
                 self?.dataSource = data
                 self?.mapCellData()
                 //print(data)
